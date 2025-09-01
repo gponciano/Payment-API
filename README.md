@@ -1,2 +1,13 @@
-# Payment-API
-Creating payment API with Flask and WebSockets
+📘 Project Name: Payment-API
+
+🛠️ Built With
+
+Flask
+
+
+
+🚀 Features
+
+📦 Deployment
+
+👨‍💻 Author
