@@ -3,13 +3,15 @@ from repository.database import db
 from db_models.payment import Payment
 from datetime import datetime, timedelta
 
-
+# Database skeleton
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
 
+# Initiating database
 db.init_app(app)
 
+# Creating initial route to create payments
 @app.route('/payments/pix', methods=['POST'])
 def create_payment_pix():
     data = request.get_json()
@@ -26,6 +28,8 @@ def create_payment_pix():
 
     return jsonify({"message": "The payment has been created",
                     "payment": new_payment.to_dict()})
+
+
 
 @app.route('/payments/pix/confirmation', methods=['POST'])
 def pix_confirmation():
