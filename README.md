@@ -2,8 +2,7 @@
 
 🛠️ Built With
 
-Flask
-
+- Flask
 
 
 🚀 Features
