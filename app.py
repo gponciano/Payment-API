@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, send_file, render_template
+from flask_socketio import SocketIO
 from repository.database import db
 from db_models.payment import Payment
 from datetime import datetime, timedelta
@@ -11,6 +12,9 @@ app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
 
 # Initiating database
 db.init_app(app)
+
+# Initiating socketIO
+socketio = SocketIO(app)
 
 # Creating initial route to create payments
 @app.route('/payments/pix', methods=['POST'])
@@ -57,4 +61,4 @@ def payment_pix_page(payment_id):
                            qr_code=payment.qr_code)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True)
